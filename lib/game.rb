@@ -16,7 +16,7 @@ class Game
 
   # returns the number value from a ship placement eg. "1a" returns "1"
   def get_number_value(placement)
-    placement[0]
+    placement[0].to_i
   end
 
   # returns the letter value from a ship placement eg. "1a" returns "a"
@@ -24,17 +24,21 @@ class Game
     placement[1]
   end
 
-  def calculate_placement_horizontal(placement)
-    if placement == 11
-      "Jack"
-    elsif card == 12
-      "Queen"
-    elsif card == 13
-      "King"
-    elsif card == 14
-      "Joker"
-    else
-      card
+  # don't need one for numbers as it's already not 0-indexed
+  def calculate_row_letter(placement)
+    case get_letter_value(placement)
+      when "a"
+        1
+      when "b"
+        2
+      when "c" 
+        3
+      when "d" 
+        4
+      when "e" 
+        5
+      else 
+        raise "Invalid input"
     end
   end
 end

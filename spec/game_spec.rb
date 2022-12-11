@@ -37,7 +37,18 @@ describe Game do
 
   describe 'get_number_value' do
     it 'get the number value from a placement' do
-      expect(game.get_number_value("1a")).to eq "1"
+      expect(game.get_number_value("1a")).to eq 1
+    end
+  end
+
+  describe 'calculate_row_letter' do
+    it 'returns a number for a letter input to help determine which row to put the marking in' do
+      expect(game.calculate_row_letter("1a")).to eq 1
+      expect(game.calculate_row_letter("3b")).to eq 2
+      expect(game.calculate_row_letter("2c")).to eq 3
+      expect(game.calculate_row_letter("4d")).to eq 4
+      expect(game.calculate_row_letter("5e")).to eq 5
+      expect{game.calculate_row_letter("1f")}.to raise_error("Invalid input")
     end
   end
 end
