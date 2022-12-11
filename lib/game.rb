@@ -11,7 +11,7 @@ class Game
   def place_ships
     puts "Place your 5 ship coordinates (separated by commas)"
     input = gets.chomp.split(",")
-    input
+    mark_grid(input, @player_1)
   end
 
   def mark_grid(input, player)

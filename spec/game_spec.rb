@@ -31,15 +31,14 @@ describe Game do
 
     it 'returns your chosen ship placements marked on your grid' do
       allow(game).to receive(:gets).and_return("1a,2b,3c,4d,5e\n")
-      # expect(game.place_ships).to eq [
-      #   ["0", "1", "2", "3", "4", "5"],
-      #   ["A", "O", "-", "-", "-", "-"],
-      #   ["B", "-", "O", "-", "-", "-"],
-      #   ["C", "-", "-", "O", "-", "-"],
-      #   ["D", "-", "-", "-", "O", "-"],
-      #   ["E", "-", "-", "-", "-", "O"]
-      # ]
-      expect(game.place_ships).to eq ["1a", "2b", "3c", "4d", "5e"]
+      expect(game.place_ships).to eq [
+        ["0", "1", "2", "3", "4", "5"],
+        ["A", "O", "-", "-", "-", "-"],
+        ["B", "-", "O", "-", "-", "-"],
+        ["C", "-", "-", "O", "-", "-"],
+        ["D", "-", "-", "-", "O", "-"],
+        ["E", "-", "-", "-", "-", "O"]
+      ]
     end
   end
 
