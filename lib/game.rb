@@ -14,6 +14,11 @@ class Game
     input
   end
 
+  def mark_grid(input, player)
+    input.each {|placement| player.grid[calculate_row_letter(placement)][get_number_value(placement)] = "O" }
+    player.grid
+  end
+
   # returns the number value from a ship placement eg. "1a" returns "1"
   def get_number_value(placement)
     placement[0].to_i

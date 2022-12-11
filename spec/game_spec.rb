@@ -5,6 +5,20 @@ describe Game do
   let(:player_2) {double(:player_double)}
   subject(:game) { described_class.new(player_1, player_2) }
 
+  grid = [
+    ["0", "1", "2", "3", "4", "5"],
+    ["A", "-", "-", "-", "-", "-"],
+    ["B", "-", "-", "-", "-", "-"],
+    ["C", "-", "-", "-", "-", "-"],
+    ["D", "-", "-", "-", "-", "-"],
+    ["E", "-", "-", "-", "-", "-"]
+  ]
+
+  before(:each) do
+    allow(player_1).to receive(:grid).and_return(grid)
+    allow(player_2).to receive(:grid).and_return(grid)
+  end
+
   it 'initializes with 2 players' do
     expect(game.player_1).to eq player_1
     expect(game.player_2).to eq player_2
@@ -49,6 +63,19 @@ describe Game do
       expect(game.calculate_row_letter("4d")).to eq 4
       expect(game.calculate_row_letter("5e")).to eq 5
       expect{game.calculate_row_letter("1f")}.to raise_error("Invalid input")
+    end
+  end
+
+  describe 'mark_grid' do
+    it 'marks the grid with your ship placements' do
+      expect(game.mark_grid(["1a", "2b", "3c", "4d", "5e"], player_1)).to eq [
+          ["0", "1", "2", "3", "4", "5"],
+          ["A", "O", "-", "-", "-", "-"],
+          ["B", "-", "O", "-", "-", "-"],
+          ["C", "-", "-", "O", "-", "-"],
+          ["D", "-", "-", "-", "O", "-"],
+          ["E", "-", "-", "-", "-", "O"]
+        ]
     end
   end
 end
