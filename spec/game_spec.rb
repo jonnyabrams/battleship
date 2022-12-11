@@ -12,7 +12,12 @@ describe Game do
 
   describe 'place_ships' do
     it 'asks you to place 5 ships on your grid' do
-      expect { game.place_ships }.to output("Place your 1st ship\n").to_stdout
+      expect { game.place_ships }.to output("Place your 5 ship coordinates (separated by commas)\n").to_stdout
+    end
+
+    it 'returns your chosen moves' do
+      allow(game).to receive(:gets).and_return("1a,2b,3c,4d,5e\n")
+      expect(game.place_ships).to eq "1a,2b,3c,4d,5e"
     end
   end
 end

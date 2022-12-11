@@ -9,6 +9,8 @@ class Game
   end
 
   def place_ships
-    puts "Place your 1st ship"
+    puts "Place your 5 ship coordinates (separated by commas)"
+    input = gets.chomp
+    input
   end
 end
